@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous"
+        />
+
+        <title>Quản lý sinh viên</title>
+        <link rel="stylesheet" href="./scss/style.css" />
+    </head>
+    <body>
+        <section>
+            <div
+                class="toast align-items-end py-2"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+                id="toastElement"
+            >
+                <div class="d-flex">
+                    <div class="toast-body" id="toast_body">
+                        Thêm sinh viên thành công!
+                    </div>
+                    <button
+                        type="button"
+                        class="btn-close me-2 m-auto"
+                        data-bs-dismiss="toast"
+                        aria-label="Close"
+                    ></button>
+                </div>
+            </div>
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="ds-sinhvien" id="ds-sinhvien">
+                            <thead>
+                                <tr>
+                                    <th>Mã sinh viên</th>
+                                    <th>Tên sinh viên</th>
+                                    <th>Loại sinh viên</th>
+                                    <th>Điểm trung bình</th>
+                                    <th>Điểm rèn luyện</th>
+                                    <th>Xếp loại</th>
+                                    <th>
+                                        <button
+                                            class="
+                                                btn btn-primary btn-sm
+                                                rounded-0
+                                                w-100
+                                            "
+                                            id="show-themsv-modal"
+                                        >
+                                            Thêm
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div
+                        class="col-md-4 border p-2"
+                        id="themsv_container"
+                        style="display: none"
+                    >
+                        <form
+                            class="d-flex flex-column sv__form"
+                            id="themsv_form"
+                        >
+                            <h4 class="mb-3">Thêm sinh viên</h4>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="masv"> Mã sinh viên</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="text"
+                                        id="masv"
+                                        placeholder="Nhập mã sinh viên"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="tensv"> Tên sinh viên</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="text"
+                                        id="tensv"
+                                        placeholder="Nhập tên sinh viên"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="email"> Email</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="text"
+                                        id="email"
+                                        placeholder="Nhập email"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="loaisv"> Loại sinh viên</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <select id="loaisv">
+                                        <option value="1">Khó khăn</option>
+                                        <option value="2">Nghèo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="dtoan"> Điểm Toán</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="number"
+                                        id="dtoan"
+                                        placeholder="Nhập điểm Toán"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="dly"> Điểm Lý</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="number"
+                                        id="dly"
+                                        placeholder="Nhập điểm Lý"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="dhoa"> Điểm Hóa</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="number"
+                                        id="dhoa"
+                                        placeholder="Nhập điểm Hóa"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="drenluyen">
+                                        Điểm rèn luyện</label
+                                    >
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="number"
+                                        id="drenluyen"
+                                        placeholder="Nhập điểm rèn luyện"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7 ms-auto">
+                                    <button
+                                        class="
+                                            btn btn-success btn-sm
+                                            rounded-0
+                                            w-100
+                                        "
+                                        id="themsv-btn"
+                                    >
+                                        Lưu
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div
+                        class="col-md-4 border p-2"
+                        id="updatesv_container"
+                        style="display: none"
+                    >
+                        <form
+                            class="d-flex flex-column sv__form"
+                            id="updatesv_form"
+                        >
+                            <h4 class="mb-3">Cập nhật sinh viên</h4>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="masv_update">
+                                        Mã sinh viên</label
+                                    >
+                                </div>
+                                <div class="col-lg-7">
+                                    <input id="masv_update" disabled />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="tensv_update">
+                                        Tên sinh viên</label
+                                    >
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="text"
+                                        id="tensv_update"
+                                        placeholder="Nhập tên sinh viên"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="email_update"> Email</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="text"
+                                        id="email_update"
+                                        placeholder="Nhập email"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="loaisv_update">
+                                        Loại sinh viên</label
+                                    >
+                                </div>
+                                <div class="col-lg-7">
+                                    <select id="loaisv_update">
+                                        <option value="Khó khăn">
+                                            Khó khăn
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="dtoan_update"> Điểm Toán</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="number"
+                                        id="dtoan_update"
+                                        placeholder="Nhập điểm Toán"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="dly_update"> Điểm Lý</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="number"
+                                        id="dly_update"
+                                        placeholder="Nhập điểm Lý"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="dhoa_update"> Điểm Hóa</label>
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="number"
+                                        id="dhoa_update"
+                                        placeholder="Nhập điểm Hóa"
+                                    />
+                                </div>
+                            </div>
+                            <div class="sv__form-control row">
+                                <div class="col-lg-5">
+                                    <label for="drenluyen_update">
+                                        Điểm rèn luyện</label
+                                    >
+                                </div>
+                                <div class="col-lg-7">
+                                    <input
+                                        class="required"
+                                        type="number"
+                                        id="drenluyen_update"
+                                        placeholder="Nhập điểm rèn luyện"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7 ms-auto">
+                                    <button
+                                        type="submit"
+                                        class="
+                                            btn btn-success btn-sm
+                                            rounded-0
+                                            w-100
+                                        "
+                                        id="updatesv_btn"
+                                    >
+                                        Lưu
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+            integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="./js/SinhVien.js"></script>
+        <script src="./js/indexAjax.js"></script>
+        <!-- <script src="./js/main.js"></script> -->
+    </body>
+</html>

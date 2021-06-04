@@ -1,0 +1,55 @@
+.sv__form {
+  gap: .5rem;
+}
+
+.sv__form .sv__form-control {
+  display: flex;
+}
+
+.sv__form .sv__form-control label,
+.sv__form .sv__form-control input,
+.sv__form .sv__form-control select {
+  height: 2rem;
+  line-height: 2rem;
+  font-size: .8rem;
+  padding: 0 1rem;
+}
+
+.sv__form .sv__form-control label {
+  font-weight: 500;
+}
+
+.sv__form .sv__form-control input,
+.sv__form .sv__form-control select,
+.sv__form .sv__form-control option * {
+  border-radius: 0;
+  border: #ccc solid 2px;
+  outline: none;
+  width: 100%;
+}
+
+.sv__form .sv__form-control input:focus,
+.sv__form .sv__form-control select:focus,
+.sv__form .sv__form-control option *:focus {
+  border-color: green;
+}
+
+.ds-sinhvien {
+  width: 100%;
+  font-size: .8rem;
+}
+
+.ds-sinhvien thead {
+  border: #ccc solid 2px;
+}
+
+.ds-sinhvien th,
+.ds-sinhvien td {
+  height: 2.5rem;
+  padding: 0 1rem;
+}
+
+.ds-sinhvien th,
+.ds-sinhvien td {
+  border: #ccc solid 2px;
+}
